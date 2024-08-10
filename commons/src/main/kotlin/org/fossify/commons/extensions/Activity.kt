@@ -83,24 +83,24 @@ fun Activity.appLaunched(appId: String) {
     baseConfig.appRunCount++
     if (baseConfig.appRunCount % 30 == 0 && !isAProApp()) {
         if (!resources.getBoolean(R.bool.hide_google_relations)) {
-            showDonateOrUpgradeDialog()
+//            showDonateOrUpgradeDialog()
         }
     }
 
-    if (baseConfig.appRunCount % 40 == 0 && !baseConfig.wasAppRated) {
+    if (baseConfig.appRunCount % 6 == 0 && !baseConfig.wasAppRated) {
         if (!resources.getBoolean(R.bool.hide_google_relations)) {
             RateStarsDialog(this)
         }
     }
 }
 
-fun Activity.showDonateOrUpgradeDialog() {
-    if (getCanAppBeUpgraded()) {
-        UpgradeToProDialog(this)
-    } else if (!isOrWasThankYouInstalled()) {
-        DonateDialog(this)
-    }
-}
+//fun Activity.showDonateOrUpgradeDialog() {
+//    if (getCanAppBeUpgraded()) {
+//        UpgradeToProDialog(this)
+//    } else if (!isOrWasThankYouInstalled()) {
+//        DonateDialog(this)
+//    }
+//}
 
 fun Activity.isAppInstalledOnSDCard(): Boolean = try {
     val applicationInfo = packageManager.getPackageInfo(packageName, 0).applicationInfo
